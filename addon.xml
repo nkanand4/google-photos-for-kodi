@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<addon id="plugin.picture.picasa4kodi" name="Google photos" version="0.1.3" provider-name="Nitesh Anand">
+    <requires>
+        <import addon="xbmc.python" version="2.14.0"/>
+        <import addon="script.module.parsedom" version="0.9.1"/>
+        <import addon="script.module.simplejson" version="3.3.0"/>
+    </requires>
+    <extension point="xbmc.python.pluginsource" library="default.py">
+        <provides>image</provides>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <platform>all</platform>
+        <summary lang="en">It is Google photos on Kodi/</summary>
+        <description lang="en">It shows pictures available on your google photos account, if any</description>
+    </extension>
+</addon>
