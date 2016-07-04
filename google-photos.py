@@ -4,12 +4,12 @@ import urllib
 
 __author__ = 'nitesh'
 
-client_id = "4"
+client_id = ""
 client_secret = ""
 scope = "https://picasaweb.google.com/data profile"
 device_code = ""
 access_token = ""
-reresh_token = ""
+refresh_token = ""
 
 
 def get_user_code_for_device():
