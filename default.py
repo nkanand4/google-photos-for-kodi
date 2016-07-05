@@ -1,16 +1,10 @@
 #!/usr/bin/python
-import sys, urllib, urllib2, json, urlparse, re
+import sys, urllib, urllib2, urlparse
 import xbmc, xbmcgui
 import xbmcplugin
+import xml.dom.minidom
+import json
 
-if sys.version_info < (2, 7):
-    import simplejson as json
-else:
-    import json
-
-import CommonFunctions
-common = CommonFunctions
-common.plugin = "Google photos"
 base_url = sys.argv[0]
 
 addon_handle = int(sys.argv[1])
