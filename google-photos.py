@@ -90,12 +90,17 @@ def parse_xml_for_albums(xmlstr):
         feed = feed[0]
         entryNodes = feed.getElementsByTagName('entry')
         for entryNode in entryNodes:
-            idNode = entryNode.getElementsByTagName('gphoto:id')
-            titleNode = entryNode.getElementsByTagName('title')
-            if len(idNode):
-                album_id = get_text(idNode[0].childNodes)
-                title = get_text(titleNode[0].childNodes)
-                entries.append({'id': album_id, 'title': title})
+            id_node = entryNode.getElementsByTagName('gphoto:id')
+            title_node = entryNode.getElementsByTagName('title')
+            media_group = entryNode.getElementsByTagName('media:group')
+            if len(media_group):
+                media_group = media_group[0]
+                thumbnail = media_group.getElementsByTagName('media:thumbnail')
+                thumbnail = thumbnail[0].getAttribute('url')
+            if len(id_node):
+                album_id = get_text(id_node[0].childNodes)
+                title = get_text(title_node[0].childNodes)
+                entries.append({'id': album_id, 'title': title, 'thumbnail': thumbnail})
 
     print entries
     return entries
@@ -104,6 +109,7 @@ def parse_xml_for_albums(xmlstr):
 def get_user_album_list():
     req = urllib2.Request("https://picasaweb.google.com/data/feed/api/user/default")
     xml_string = make_request(req)
+    print xml_string
     album_list = parse_xml_for_albums(xml_string)
     for album in album_list:
         print album['title']
